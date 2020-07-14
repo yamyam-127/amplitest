@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+
 <html lang="ja">
 <head>
 <meta charset="utf-8">
@@ -86,7 +86,7 @@ connect.contact(function(contact) {
 		var conn = contact.getActiveInitialConnection();
 		var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
 	}
-
+	jabra.ring();
 	writeLog('コンタクトイベントのサブスクライブ（connect.contact）!\n' );
 	writeLog('contact.getActiveInitialConnection().getEndpoint().phoneNumber = ' + phoneNumber + '\n');
 	writeLog('contact.getQueue().name = ' + contact.getQueue().name + '\n');
@@ -95,8 +95,8 @@ connect.contact(function(contact) {
 
 	//コンタクト情報がリフレッシュされたイベント
 	contact.onRefresh(function(contact) {
-		writeLog('コンタクト情報がリフレッシュされた（connect.onRefresh）!\n');
 
+		writeLog('コンタクト情報がリフレッシュされた（connect.onRefresh）!\n');
 		//コンタクトのコネクションを確認する
 		var conns = contact.getConnections();
 		writeLog('コンタクトのコネクション = ' + JSON.stringify(conns) + '\n');
@@ -110,7 +110,6 @@ connect.contact(function(contact) {
 
 	//コールが着信したイベント
 	contact.onIncoming(function(contact) {
-		jabra.ring();
 		writeLog('コールが着信した（connect.onIncoming）!\n');
 		writeLog('contactId =' + contact.getContactId() + '\n');
 	});
