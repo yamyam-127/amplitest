@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <title>amazon connect stream sample</title>
-<script src="amazon-connect-v1.2.0.js"></script>
+<script src="amazon-connect-v1.4.9.js"></script>
+<script src="jabra.browser.integration-2.0.js"></script>
 </head>
 <body>
 	<table>
@@ -109,6 +110,7 @@ connect.contact(function(contact) {
 
 	//コールが着信したイベント
 	contact.onIncoming(function(contact) {
+		jabra.ring();
 		writeLog('コールが着信した（connect.onIncoming）!\n');
 		writeLog('contactId =' + contact.getContactId() + '\n');
 	});
