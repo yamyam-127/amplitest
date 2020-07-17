@@ -60,7 +60,6 @@ connect.agent(function(agent) {
 
 	//エージェントが受付可になったイベント
 	agent.onRoutable(function(agent) {
-		jabra.ring();
 		writeLog('エージェントが受付可になった（agent.onRoutable）!\n');
 	});
 
@@ -88,7 +87,6 @@ connect.contact(function(contact) {
 		var conn = contact.getActiveInitialConnection();
 		var phoneNumber = contact.getActiveInitialConnection().getEndpoint().phoneNumber;
 	}
-	jabra.ring();
 	writeLog('コンタクトイベントのサブスクライブ（connect.contact）!\n' );
 	writeLog('contact.getActiveInitialConnection().getEndpoint().phoneNumber = ' + phoneNumber + '\n');
 	writeLog('contact.getQueue().name = ' + contact.getQueue().name + '\n');
